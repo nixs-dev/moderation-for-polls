@@ -1,0 +1,23 @@
+<div ng-controller="profilesController">
+    <div class="app-section" id="profile-section">
+        <div>
+            <input type="text" placeholder="ID" ng-model="user_id">
+            <button ng-click="get_user(user_id)"><i class="fas fa-search"></i></button>
+        </div>
+        <div ng-if="user" id="profile-info">
+            <img src="{{ 
+                ($parent.user.photo ? $parent.user.photo : 
+                    ($parent.user.gender == 'Masculino' ? '/resources/img/default_male_icon.png' : '/resources/img/default_female_icon.png')
+                )
+            }}">
+            
+            <div id="basic-info">
+                <label>{{ user.username }}</label>
+                <label>{{ user.gender }}</label>
+            </div>
+        </div>
+        <div ng-if="!user">
+            <h1>Usuário não encontrado</h1>
+        </div>
+    </div>
+</div>
